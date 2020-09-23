@@ -13,6 +13,15 @@
     background-size: cover;
 }
 
+.parallax-relative {
+    height: 500px;
+    /* Create the parallax scrolling effect */
+    background-attachment: local;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .portfolioContainer {
     display: flex;
     justify-content: space-around;
@@ -35,4 +44,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.parallax-repeating {
+    background-repeat: no-repeat;
+    background-size: contain;
 }
