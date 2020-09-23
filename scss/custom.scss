@@ -3,5 +3,11 @@ $theme-colors: (
   "secondary": #90caf9
 );
 
+$carousel-transition: (
+  transition: transform 2s ease, opacity .5s ease-out
+);
+
+
+
 @import "../node_modules/bootstrap/scss/bootstrap";
 

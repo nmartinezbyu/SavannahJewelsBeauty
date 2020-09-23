@@ -18,6 +18,8 @@ npm run build-css
 
 under the hood this command just takes the scss/custom.scss file and compiles it to the css/bootstrap.css file `sass scss/custom.scss css/bootstrap.css`
 
+Here's a good video on how to customize the theme and imports from Bootstrap https://www.youtube.com/watch?v=6Ovw43Dkp44
+
 ### Run it
 
 ```python
