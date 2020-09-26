@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/bootstrap.css">
 
+  <link rel="icon" type="image/jpg" href="/images/favicon.jpg" />
   <title>Savannah Jewels Beauty</title>
 </head>
 <body>
@@ -22,16 +23,16 @@
         <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="/portfolio.html">Portfolio</a>
         <a class="nav-item nav-link" href="#">Schedule/Pricing</a>
-        <a class="nav-item nav-link" href="#">About</a>
+        <a class="nav-item nav-link" href="/about">About</a>
       </div>
     </div>
   </nav>
   <div class="mt-5">
 
-    <div id="lashModelCarousel" class="carousel slide position-relative w-100 h-100" data-ride="carousel" data-interval="4000">
+    <div id="lashModelCarousel" class="carousel slide position-relative" data-ride="carousel" data-interval="4000">
       <div class="position-absolute absolute-center w-100" style="z-index: 10;">
-        <h1 class="text-white display-1 font-weight-normal">Savannah Jewels Beauty</h1>
-        <button class="btn btn-primary btn-lg">Shop Lashes</button>
+        <h1 id="homeCarouselHeader" class="text-white text-uppercase">Savannah Jewels Beauty</h1>
+        <button class="btn btn-primary btn-lg text-uppercase">Shop Lashes</button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -62,7 +63,7 @@
       </div>
     </div>
   
-    <div class="parallax" style="height: 550px; background-color: black;">
+    <div class="parallax" style="background-color: black;">
       <div class="d-flex flex-column justify-content-center text-center">
         <h1 class="display-4 text-white">Glamorous Lashes</h1>
         <button class="btn btn-outline-primary btn-lg m-auto">Shop Now</button>
@@ -74,40 +75,33 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-6 parallax-relative" style="background-image: url(/images/jewels-green-grass.jpg);">
-          <div class="position-absolute" style="right: 0; top: 50%; transform: translateY(-50%);">
-            <div class="card bg-dark text-white" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Follow Me</h5>
-                <p class="card-text">Follow me on instagram to see my latest work or to stay updated on the latest deals.</p>
-                <a href="https://www.instagram.com/savannahjewelsbeauty.amara/?hl=en" class="iconButton">
-                  <i class="fa fa-instagram" style="font-size:48px;color:white"></i>
-                  <div class="cardButtonText" style="color: white">Follow</div>
-                </a>
-              </div>
-            </div>
+  </div>
+
+  <footer class="bg-light">
+    <div class="container p-5">
+      <div class="row justify-content-around text-center">
+        <div class="col-12 col-md-6">
+          <div class="row justify-content-center">
+            <a href="https://www.instagram.com/savannahjewelsbeauty.amara/?hl=en" target="_blank" class="iconButton mx-3">
+              <i class="fa fa-instagram" style="font-size:24px;color:black"></i>
+            </a>
+            <a href="https://www.instagram.com/savannahjewelsbeauty.amara/?hl=en" target="_blank" class="iconButton mx-3">
+              <i class="fa fa-facebook" style="font-size:24px;color:black"></i>
+            </a>
           </div>
         </div>
-        <div class="col-6 parallax-relative" style="background-image: url(/images/jewels-winter-snow.jpg);">
-          <div class="position-absolute" style="left: 0; top: 50%; transform: translateY(-50%);">
-            <div class="card bg-light" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Like My Page</h5>
-                <p class="card-text">Like my page on Facebook to see my latest work or to stay updated on the latest deals.</p>
-                <a href="https://www.instagram.com/savannahjewelsbeauty.amara/?hl=en" class="iconButton">
-                  <i class="fa fa-facebook" style="font-size:48px;color:black"></i>
-                  <div class="cardButtonText" style="color: black">Like on facebook</div>
-                </a>
-              </div>
-            </div>
+        <div class="col-12 col-md-6">
+          <div class="row justify-content-center">
+            Website Developed by Martinez & Black <span>
+              <a href="https://github.com/nmartinezbyu/SavannahJewelsBeauty/tree/master" target="_blank" class="iconButton mx-3">
+                <i class="fa fa-github" style="font-size:24px;color:black"></i>
+              </a>
+            </span>
           </div>
         </div>
       </div>
     </div>
-
-  </div>
+  </footer>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

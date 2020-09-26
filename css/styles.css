@@ -1,3 +1,14 @@
+#lashModelCarousel {
+    background-color: black;
+    padding: 200px 0;
+}
+#homeCarouselHeader {
+    font-size: 3rem !important;
+    font-weight: 200 !important;
+    line-height: 1.2 !important;
+    margin-top: -2rem !important;
+    padding-bottom: 16rem !important;
+}
 .banner {
     background-color: red;
     width: 100%;
@@ -5,7 +16,7 @@
 }
 
 .parallax {
-    height: 500px;
+    min-height: 20rem;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -82,4 +93,73 @@
     margin: auto 0 auto 5px;
     font-weight: bold;
     font-size: 20px;
+}
+
+
+.dual-img-card-1 {
+    position: absolute;
+    bottom: 0; 
+    left: 50%; 
+    transform: translateX(-50%);
+}
+
+.dual-img-card-2 {
+    position: absolute;
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%);
+}
+
+/* Small Breakpoint */
+@media (min-width: 575.98px) {
+    #lashModelCarousel {
+        background-color: black;
+        padding: 100px;
+    }
+    #homeCarouselHeader {
+        font-size: 4rem !important;
+        font-weight: 300 !important;
+        line-height: 1.2 !important;
+        margin-top: -2rem !important;
+        padding-bottom: 4rem !important;
+    }
+}
+
+/* Medium Breakpoint */
+@media (min-width: 767.98px) {
+    #lashModelCarousel {
+        background-color: black;
+        padding: 50px 0;
+    }
+    #homeCarouselHeader {
+        font-size: 5rem !important;
+        font-weight: 300 !important;
+        line-height: 1.2 !important;
+        margin-top: 0 !important;
+        padding-bottom: 3rem !important;
+    }
+    .dual-img-card-1 {
+        position: absolute;
+        right: 0; 
+        left: auto;
+        top: 50%; 
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+
+    .dual-img-card-2 {
+        position: absolute;
+        left: 0; 
+        top: 50%; 
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+}
+
+/* Large Breakpoint */
+@media (min-width: 991.98px) {
+    #lashModelCarousel {
+        background-color: black;
+        padding: 0;
+    }
 }
