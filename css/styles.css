@@ -1,12 +1,12 @@
 #lashModelCarousel {
     background-color: black;
-    padding: 200px 0;
+    padding: 150px 0;
 }
 #homeCarouselHeader {
     font-size: 3rem !important;
     font-weight: 200 !important;
     line-height: 1.2 !important;
-    margin-top: -2rem !important;
+    margin-top: -4rem !important;
     padding-bottom: 16rem !important;
 }
 .banner {
@@ -67,6 +67,10 @@
     box-shadow: 20px 10px 18px 10px rgba(255, 255, 255, 0.2);
 }
 
+.font-brush {
+    font-family: Brush Script MT, Brush Script Std, cursive;
+}
+
 .absolute-center {
     top: 50%;
     left: 50%;
@@ -110,11 +114,20 @@
     transform: translateX(-50%);
 }
 
+.lashDetails {
+    background-color: #343a40de;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 25px;
+}
+
 /* Small Breakpoint */
 @media (min-width: 575.98px) {
     #lashModelCarousel {
         background-color: black;
-        padding: 100px;
+        padding: 100px 0;
     }
     #homeCarouselHeader {
         font-size: 4rem !important;
@@ -129,7 +142,10 @@
 @media (min-width: 767.98px) {
     #lashModelCarousel {
         background-color: black;
-        padding: 50px 0;
+        padding: 0 !important;
+    }
+    .carousel-responsive-height {
+        height: 80vh !important;
     }
     #homeCarouselHeader {
         font-size: 5rem !important;
@@ -161,5 +177,8 @@
     #lashModelCarousel {
         background-color: black;
         padding: 0;
+    }
+    .carousel-responsive-height {
+        height: 80vh !important;
     }
 }
