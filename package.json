@@ -1,0 +1,24 @@
+{
+  "name": "savannahjewelsbeauty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass scss/custom.scss css/bootstrap.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmartinezbyu/SavannahJewelsBeauty.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmartinezbyu/SavannahJewelsBeauty/issues"
+  },
+  "homepage": "https://github.com/nmartinezbyu/SavannahJewelsBeauty#readme"
+}
