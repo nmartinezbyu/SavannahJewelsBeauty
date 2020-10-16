@@ -1,7 +1,7 @@
-* {box-sizing: border-box;}
+#calendar * {box-sizing: border-box;}
 ul {list-style-type: none;}
 body {font-family: Verdana, sans-serif;}
-
+.pointer {cursor: pointer;}
 .month {
   padding: 70px 25px;
   width: 100%;
