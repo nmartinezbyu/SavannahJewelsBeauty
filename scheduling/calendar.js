@@ -110,6 +110,7 @@ async function setDays() {
             ${new Date(event.start.dateTime).toLocaleTimeString()} - ${new Date(event.end.dateTime).toLocaleTimeString()}
             <button class="btn btn-secondary" onclick="onReserve(${i})">Reserve</button>
           `;
+          timeSlot.className = "my-2";
           availableTimes.appendChild(timeSlot)
         });
         document.getElementById("selectedDate").appendChild(availableTimes);
