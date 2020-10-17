@@ -2,14 +2,30 @@
 <html>
 
 <head>
-  <title>Savannah Jewel's Appointment Calendar</title>
+  <title>Savannah Jewel's Beauty</title>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link rel="stylesheet" href="./calendar.css">
 </head>
 
 <body>
-  <p>Savannah Jewel's Appointment Calendar</p>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-fixed fixed-top" >
+    <a class="navbar-brand" href="/">SJB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/portfolio">Portfolio</a>
+        <a class="nav-item nav-link active" href="#">Schedule/Pricing</a>
+        <a class="nav-item nav-link" href="/about">About</a>
+      </div>
+    </div>
+  </nav>
+  <h3 style="margin: 60px 0 0 10px;">Savannah Jewel's Appointment Calendar</h3>
 
   <div class="row w-100">
     <div id="calendar" class="col-12 col-md-8">
@@ -98,7 +114,34 @@
         </div>
       </div>
     </div>
+    
   </div>
+
+  <footer class="bg-light">
+    <div class="container p-5">
+      <div class="row justify-content-around text-center">
+        <div class="col-12 col-md-6">
+          <div class="row justify-content-center">
+            <a href="https://www.instagram.com/savannahjewelsbeauty.amara/?hl=en" target="_blank" class="iconButton mx-3">
+              <i class="fa fa-instagram" style="font-size:24px;color:black"></i>
+            </a>
+            <a href="https://www.instagram.com/savannahjewelsbeauty.amara/?hl=en" target="_blank" class="iconButton mx-3">
+              <i class="fa fa-facebook" style="font-size:24px;color:black"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="row justify-content-center">
+            Website Developed by Martinez & Black <span>
+              <a href="https://github.com/nmartinezbyu/SavannahJewelsBeauty/tree/master" target="_blank" class="iconButton mx-3">
+                <i class="fa fa-github" style="font-size:24px;color:black"></i>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
   <!--Add buttons to initiate auth sequence and sign out-->
@@ -114,6 +157,7 @@
   </script>
 
   <script src="./calendar.js"></script>
+  
 </body>
 
 </html>

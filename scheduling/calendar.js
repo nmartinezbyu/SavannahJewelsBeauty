@@ -67,21 +67,6 @@ function setMonth() {
     `;
 }
 
-// function hasEvent(date) {
-//   //events is a global variable in gapi.js
-//   for(let i in events) {
-//     let other = new Date(Date.parse(events[i].start.dateTime))
-//     let isSameDay = other.getDate() === date.getDate() 
-//         &&  other.getMonth() === date.getMonth() 
-//         &&  other.getFullYear() === date.getFullYear()
-    
-//     if(isSameDay) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
-
 function isCurrentMonth(d = new Date()) {
   return (d.getMonth() == today.getMonth() && d.getFullYear() == today.getFullYear())
 }
@@ -118,7 +103,6 @@ async function setDays() {
       daysList[start.getDate() + offset].addEventListener('click', (e) => {
         document.getElementById("selectedDate").innerHTML = "" // reset the available slots list
         let key = e.target.getAttribute("key")
-        console.log(key);
         let availableTimes = elt("div");
         dayToEventMap[key].forEach(event => {
           let timeSlot = elt("div");

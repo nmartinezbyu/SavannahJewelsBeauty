@@ -73,6 +73,12 @@ td.event {
   cursor: pointer;
 }
 
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
 }

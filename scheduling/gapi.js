@@ -10,10 +10,6 @@ var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
-//var authorizeButton = document.getElementById('authorize_button');
-//var signoutButton = document.getElementById('signout_button');
-//var getEvents = document.getElementById('get_events');
-
 let events = [];
 
 /**
@@ -37,10 +33,6 @@ function initClient() {
     // Listen for sign-in state changes.
     gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
-    // Handle the initial sign-in state.
-    //updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    //authorizeButton.onclick = handleAuthClick;
-    //signoutButton.onclick = handleSignoutClick;
     listUpcomingEvents();
   }, function(error) {
     appendPre(JSON.stringify(error, null, 2));
@@ -99,12 +91,10 @@ function listUpcomingEvents() {
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
-    'maxResults': 10,
+    'maxResults': 50,
     'orderBy': 'startTime'
   }).then(function(response) {
     events = response.result.items;
-    console.log(events);
-    appendPre('Available appointments:');
 
     if (events.length > 0) {
       for (i = 0; i < events.length; i++) {
@@ -113,10 +103,7 @@ function listUpcomingEvents() {
         if (!when) {
           when = event.start.date;
         }
-        appendPre(event.summary + ' (' + when + ')')
       }
-    } else {
-      appendPre('No available appointments found.');
     }
 
     setDays();
@@ -139,7 +126,6 @@ function reserveEvent(i) {
       transparency: "opaque" // opaque = busy; transparent = available
     }
   }).then((response) => {
-    console.log(response);
     window.alert(response)
   }, (err) => {
     console.log(err)
