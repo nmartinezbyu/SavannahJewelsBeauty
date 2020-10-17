@@ -1,3 +1,8 @@
+#eventDisplay {
+  background-color: var(--dark);
+  color: white;
+}
+
 #calendar * {box-sizing: border-box;}
 ul {list-style-type: none;}
 body {font-family: Verdana, sans-serif;}
@@ -5,7 +10,7 @@ body {font-family: Verdana, sans-serif;}
 .month {
   padding: 70px 25px;
   width: 100%;
-  background: #1abc9c;
+  background: #121212;
   text-align: center;
 }
 
@@ -21,67 +26,47 @@ body {font-family: Verdana, sans-serif;}
   letter-spacing: 3px;
 }
 
-.month .prev {
+.month #prev {
   float: left;
   padding-top: 10px;
 }
 
-.month .next {
+.month #next {
   float: right;
   padding-top: 10px;
 }
 
 .weekdays {
-  margin: 0;
-  padding: 10px 0;
-  background-color: #ddd;
+  width: 100%;
 }
 
-.weekdays li {
-  display: inline-block;
-  width: 13.6%;
-  color: #666;
+.days > tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+th, td {
+  padding: 1rem;
   text-align: center;
 }
 
-.days {
-  padding: 10px 0;
-  background: #eee;
-  margin: 0;
-}
-
-.days li {
-  list-style-type: none;
-  display: inline-block;
-  width: 13.6%;
-  text-align: center;
-  margin-bottom: 5px;
-  font-size:12px;
-  color: #777;
-}
-
-li.active {
+td.active {
   padding: 5px;
-  color: black !important;
   background: yellow;
 }
 
-li.event {
+td.event {
   padding: 5px;
   color: white !important;
   background: #1abc9c;
+  cursor: pointer;
 }
 
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
-  .weekdays li, .days li {width: 13.1%;}
 }
 
 @media screen and (max-width: 420px) {
-  .weekdays li, .days li {width: 12.5%;}
-  .days li .active {padding: 2px;}
 }
 
 @media screen and (max-width: 290px) {
-  .weekdays li, .days li {width: 12.2%;}
 }

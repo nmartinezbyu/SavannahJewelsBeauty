@@ -1,56 +1,119 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Savannah Jewel's Appointment Calendar</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="./calendar.css">
-  </head>
-  
-  <body>
-    <p>Savannah Jewel's Appointment Calendar</p>
 
-    <div id="calendar">
-      <div class="month">      
+<head>
+  <title>Savannah Jewel's Appointment Calendar</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="./calendar.css">
+</head>
+
+<body>
+  <p>Savannah Jewel's Appointment Calendar</p>
+
+  <div class="row w-100">
+    <div id="calendar" class="col-12 col-md-8">
+      <div class="month">
         <ul>
-          <li class="prev pointer">&#10094;</li>
-          <li class="next pointer">&#10095;</li>
+          <li id="prev">&#10094;</li>
+          <li id="next" class="pointer">&#10095;</li>
           <li id="monthHeader"></li>
         </ul>
       </div>
-      
-      <ul class="weekdays">
-        <li>Su</li>
-        <li>Mo</li>
-        <li>Tu</li>
-        <li>We</li>
-        <li>Th</li>
-        <li>Fr</li>
-        <li>Sa</li>
-      </ul>
-      
-      <ul id="daysList" class="days">  
-        
-      </ul>
+
+      <table class="weekdays">
+        <tr>
+          <th>Su</th>
+          <th>Mo</th>
+          <th>Tu</th>
+          <th>We</th>
+          <th>Th</th>
+          <th>Fr</th>
+          <th>Sa</th>
+        </tr>
+        <tbody id="daysList" class="days">
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div id="selectedDate">
-      
+    <div id="eventDisplay" class="col-12 col-md-4">
+      <div class="container p-5">
+        <h3>Available Slots</h3>
+        <hr class="my-4" style="border-top: 3px solid #fff"/>
+        <div id="selectedDate">
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <!-- <button id="authorize_button" style="display: none;">Authorize</button>
+
+  <!--Add buttons to initiate auth sequence and sign out-->
+  <!-- <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button> -->
-    <!-- <button id="get_events"> Events </button> -->
-    <pre id="content" style="white-space: pre-wrap;"></pre>
-    <!--Displays the calendar not actually part of the api. This iframe was from another source.-->
-    <!-- <iframe src="https://calendar.google.com/calendar/embed?src=efbgjv5tk4t9kf61ql54gntdsk%40group.calendar.google.com&ctz=America%2FDenver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
+  <!-- <button id="get_events"> Events </button> -->
+  <pre id="content" style="white-space: pre-wrap;"></pre>
 
-    <script src="./gapi.js"></script>
-    <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
+  <script src="/secrets.js"></script>
+  <script src="./gapi.js"></script>
+  <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
 
-    <script src="./calendar.js"></script>
-  </body>
+  <script src="./calendar.js"></script>
+</body>
+
 </html>
