@@ -122,3 +122,26 @@ function listUpcomingEvents() {
     setDays();
   });
 } 
+
+function reserveEvent(i) {
+  gapi.client.calendar.events.patch({
+    calendarId: CALENDAR_ID,
+    eventId: events[i].id,
+    sendUpdates: "all",
+    resource: {
+      atendees: [
+        {
+          displayName: "Michael",
+          email: "michaelblack117@gmail.com"
+        }
+      ],
+      transparency: "opaque" // opaque = busy; transparent = available
+    }
+  }).then((response) => {
+    console.log(response);
+    window.alert(response)
+  }, (err) => {
+    console.log(err)
+    window.alert(err.result.error.message)
+  })
+}

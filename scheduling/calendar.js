@@ -116,7 +116,6 @@ async function setDays() {
       dayToEventMap[start.getDate()].push(events[i])
       daysList[start.getDate() + offset].addEventListener('click', (e) => {
         let key = e.target.innerHTML
-        //Some functionality to show selected date. There is a bug. The date shows up as the first and not the one selected.
         let availableTimes = elt("div");
         dayToEventMap[key].forEach(event => {
           let timeSlot = elt("div");
@@ -133,7 +132,7 @@ async function setDays() {
 }
 
 function onReserve(i) {
-  console.log(events[i])
+  reserveEvent(i)
 }
 
 window.addEventListener('load', (event) => {
