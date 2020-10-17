@@ -12,7 +12,9 @@ var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
 //var authorizeButton = document.getElementById('authorize_button');
 //var signoutButton = document.getElementById('signout_button');
-var getEvents = document.getElementById('get_events');
+//var getEvents = document.getElementById('get_events');
+
+let events = [];
 
 /**
  *  On load, called to load the auth2 library and API client library.
@@ -39,7 +41,7 @@ function initClient() {
     //updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     //authorizeButton.onclick = handleAuthClick;
     //signoutButton.onclick = handleSignoutClick;
-    getEvents.onclick = listUpcomingEvents;
+    listUpcomingEvents();
   }, function(error) {
     appendPre(JSON.stringify(error, null, 2));
   });
@@ -100,7 +102,8 @@ function listUpcomingEvents() {
     'maxResults': 10,
     'orderBy': 'startTime'
   }).then(function(response) {
-    var events = response.result.items;
+    events = response.result.items;
+    console.log(events);
     appendPre('Available appointments:');
 
     if (events.length > 0) {
@@ -115,5 +118,7 @@ function listUpcomingEvents() {
     } else {
       appendPre('No available appointments found.');
     }
+
+    setDays();
   });
 } 

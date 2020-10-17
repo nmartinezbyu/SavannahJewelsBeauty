@@ -62,6 +62,12 @@ body {font-family: Verdana, sans-serif;}
 
 li.active {
   padding: 5px;
+  color: black !important;
+  background: yellow;
+}
+
+li.event {
+  padding: 5px;
   color: white !important;
   background: #1abc9c;
 }

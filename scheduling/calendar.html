@@ -10,16 +10,16 @@
     <!--Add buttons to initiate auth sequence and sign out-->
     <!-- <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button> -->
-    <button id="get_events"> Events </button>
+    <!-- <button id="get_events"> Events </button> -->
     <pre id="content" style="white-space: pre-wrap;"></pre>
     <!--Displays the calendar not actually part of the api. This iframe was from another source.-->
     <iframe src="https://calendar.google.com/calendar/embed?src=efbgjv5tk4t9kf61ql54gntdsk%40group.calendar.google.com&ctz=America%2FDenver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
-      var CLIENT_ID = '1029596788185-dtupqpvpoeql9b88h49rg9sc7n1qjau7.apps.googleusercontent.com';
-      var API_KEY = 'AIzaSyDJqgWeJX2RUqqbM4-au4fa58c4cPBfvoo';
-      var CALENDAR_ID = 'efbgjv5tk4t9kf61ql54gntdsk@group.calendar.google.com';
+      var CLIENT_ID = '';
+      var API_KEY = '';
+      var CALENDAR_ID = '';
 
       // Array of API discovery doc URLs for APIs used by the quickstart
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -57,7 +57,7 @@
           //updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
           //authorizeButton.onclick = handleAuthClick;
           //signoutButton.onclick = handleSignoutClick;
-          getEvents.onclick = listUpcomingEvents;
+          listUpcomingEvents();
         }, function(error) {
           appendPre(JSON.stringify(error, null, 2));
         });
