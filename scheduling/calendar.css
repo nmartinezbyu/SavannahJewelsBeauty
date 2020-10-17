@@ -49,15 +49,27 @@ th, td {
   text-align: center;
 }
 
+td.event > span {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background: #1abc9c;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: .6;
+  transform: translate(-50%, -50%);
+}
+
 td.active {
-  padding: 5px;
   background: yellow;
 }
 
 td.event {
-  padding: 5px;
-  color: white !important;
-  background: #1abc9c;
+  /* color: white !important; */
+  /* background: #1abc9c; */
+  position: relative;
   cursor: pointer;
 }
 

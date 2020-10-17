@@ -97,8 +97,9 @@ async function setDays() {
   }
   
   while (iterator.getMonth() === date.getMonth()) {
-    daysList[iterator.getDate() + offset].innerHTML = iterator.getDate()
+    daysList[iterator.getDate() + offset].innerHTML = `${iterator.getDate()}<span key="${iterator.getDate()}"></span>`
     daysList[iterator.getDate() + offset].className = "" // resets active and event cells when month changes
+    daysList[iterator.getDate() + offset].setAttribute("key", iterator.getDate())
     iterator.setDate(iterator.getDate() + 1)
   }
 
@@ -115,7 +116,9 @@ async function setDays() {
       }
       dayToEventMap[start.getDate()].push(events[i])
       daysList[start.getDate() + offset].addEventListener('click', (e) => {
-        let key = e.target.innerHTML
+        document.getElementById("selectedDate").innerHTML = "" // reset the available slots list
+        let key = e.target.getAttribute("key")
+        console.log(key);
         let availableTimes = elt("div");
         dayToEventMap[key].forEach(event => {
           let timeSlot = elt("div");

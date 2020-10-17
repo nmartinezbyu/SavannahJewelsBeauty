@@ -129,6 +129,7 @@ function reserveEvent(i) {
     eventId: events[i].id,
     sendUpdates: "all",
     resource: {
+      summary: "Busy",
       atendees: [
         {
           displayName: "Michael",
