@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="mt-5">
+    <div>
       <div id="lashModelCarousel" class="carousel slide position-relative" data-ride="carousel" data-interval="4000">
         <div class="position-absolute absolute-center w-100" style="z-index: 10;">
           <h1 id="homeCarouselHeader" class="text-white text-uppercase">Savannah Jewels Beauty</h1>

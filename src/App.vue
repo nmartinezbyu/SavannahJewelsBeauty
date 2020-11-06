@@ -34,7 +34,7 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  padding: 0 30px;
 }
 
 #nav a {
