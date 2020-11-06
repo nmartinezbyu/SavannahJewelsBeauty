@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div>
+    <div class="mt-5">
       <div id="lashModelCarousel" class="carousel slide position-relative" data-ride="carousel" data-interval="4000">
         <div class="position-absolute absolute-center w-100" style="z-index: 10;">
           <h1 id="homeCarouselHeader" class="text-white text-uppercase">Savannah Jewels Beauty</h1>
@@ -48,9 +48,9 @@
           <h1 class="text-white display-4">Glamorous Lashes</h1>
           <button class="m-auto btn btn-outline-primary btn-lg">Shop Now</button>
           <div class="portfolioContainer" style="grid-template-rows: repeat(1, 30vw);">
-            <image class="portfolioItem"  src="./images/lashOne.jpg"/>
-            <image class="portfolioItem"  src="./images/lashTwo.jpg"/>
-            <image class="portfolioItem"  src="./images/lashThree.jpg"/>
+            <img class="portfolioItem"  src="images/lashOne.jpg"/>
+            <img class="portfolioItem"  src="images/lashTwo.jpg"/>
+            <img class="portfolioItem"  src="images/lashThree.jpg"/>
           </div>
         </div>
       </div>
