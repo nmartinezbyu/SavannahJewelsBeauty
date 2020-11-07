@@ -61,6 +61,6 @@
 <script>
 
 export default {
-  name: 'Home',
+  name: 'Calendar',
 }
 </script>

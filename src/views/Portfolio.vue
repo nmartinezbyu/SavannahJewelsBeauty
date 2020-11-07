@@ -1,18 +1,22 @@
 <template>
-<div class="mt-5 text-center text-white" style="background: url(./images/repeatinglashesinverse.jpg); padding: 30px;">
-    <h1>Portfolio</h1>
-    <h2>Classic</h2>
+<div class="py-5 mt-5 text-center text-white" style="background: url(./images/repeatinglashesinverse.jpg);">
+    <div class="header">
+      <h1>Classic</h1>
+    </div>
     <PortfolioList :items="classicItems" />
-    <h2>Hybrid</h2>
+    <div class="header">
+      <h1>Hybrid</h1>
+    </div>    
     <PortfolioList :items="hybridItems" />
-    <h2>Volume</h2>
+    <div class="header">
+      <h1>Volume</h1>
+    </div>
     <PortfolioList :items="volumeItems" />
   </div>
 </template>
 
 <script>
 import PortfolioList from "../components/PortfolioList.vue"
-import Mock from "../assets/mock-data";
 
 export default {
   name: 'Portfolio',
@@ -22,19 +26,34 @@ export default {
   data() {
     return {
       searchText: '',
-      portfolio: Mock
     }
   },
   computed: {
     classicItems() {
-      return this.portfolio.classic.filter(item => item.name.toLowerCase().includes(this.searchText))
+      return this.$root.$data.lashes.classic
     },
     hybridItems() {
-      return this.portfolio.hybrid.filter(item => item.name.toLowerCase().includes(this.searchText))
+      return this.$root.$data.lashes.hybrid
     },
     volumeItems() {
-      return this.portfolio.hybrid.filter(item => item.name.toLowerCase().includes(this.searchText))
+      return this.$root.$data.lashes.hybrid
     }
   }
 }
 </script>
+
+<style scoped>
+.header { 
+  line-height: 1.4;
+  padding: 20px
+}
+
+h1 {
+  color: #ffffff;
+  background-color: var(--primary);
+  display: inline;
+  padding: 0.5rem 1rem;
+  --webkit-box-decoration: clone;
+  box-decoration-break: clone;
+}
+</style>
