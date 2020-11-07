@@ -20,9 +20,11 @@ export default {
   methods: {
     selectLash(lash) {
       this.$root.$data.selectedLash = lash
-      this.$router.push({ path: 'Scheduling' })
       if (this.onSelect) {
         this.onSelect(lash);
+      }
+      else {
+        this.$router.push({ path: 'Scheduling' })
       }
     }
   }

@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-12 col-md-4">
           <div class="card w-100">
-            <img class="w-100" src="/images/lashOne.jpg" alt="lash" />
+            <img class="w-100" :src="'/images/' + selectedLash.image" alt="lash" />
             <div class="text-center text-black card-body font-brush display-4">
               {{selectedLash.name}}
             </div>
@@ -16,12 +16,12 @@
         </div>
         <div class="text-white col-12 col-md-8 lashDetails">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aenean laoreet commodo quam, id fermentum augue fringilla ac. 
-            Etiam nec augue laoreet, pharetra orci ut, hendrerit tellus. 
-            Phasellus malesuada maximus elit sit amet convallis. 
-            Aenean id justo at dui aliquet pretium. 
-            Aenean aliquet purus lacus, id consectetur neque sagittis in.
+            This is something interesting describing the type of lash. 
+            Depending on the lash the description can change.
+            This will also include information about the visit. 
+            It could include warnings or requirements for customers.
+            Customers can read the description to make sure its the right lash. 
+            We hope we can settle this info with Savannah later.
           </p>
           
           <div>

@@ -4,7 +4,7 @@
       <div id="lashModelCarousel" class="carousel slide position-relative" data-ride="carousel" data-interval="4000">
         <div class="position-absolute absolute-center w-100" style="z-index: 10;">
           <h1 id="homeCarouselHeader" class="text-white text-uppercase">Savannah Jewels Beauty</h1>
-          <button class="btn btn-primary btn-lg text-uppercase">Shop Lashes</button>
+          <router-link to="/portfolio" class="btn btn-primary btn-lg text-uppercase">Shop Lashes</router-link>
         </div>
         <div class="carousel-inner carousel-responsive-height">
           <div class="carousel-item active">
@@ -36,16 +36,13 @@
     
       <div class="parallax parallax-repeating" style="background-image: url(images/repeatinglashes.jpg);">
         <div class="position-relative w-100 h-100">
-          
-        
-          
         </div>
       </div>
     
       <div class="parallax" style="background-color: black;">
         <div class="text-center d-flex flex-column justify-content-center">
           <h1 class="text-white display-4">Glamorous Lashes</h1>
-          <button class="m-auto btn btn-outline-primary btn-lg">Shop Now</button>
+          <router-link to="/portfolio" class="m-auto btn btn-outline-primary btn-lg">Shop Now</router-link>
           <div class="portfolioContainer" style="grid-template-rows: repeat(1, 30vw);">
             <img class="portfolioItem"  src="images/lashOne.jpg"/>
             <img class="portfolioItem"  src="images/lashTwo.jpg"/>
