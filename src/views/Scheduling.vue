@@ -64,6 +64,9 @@
       </div>
       <PortfolioList :items="volumeItems" :onSelect="closeModal"/>
     </Modal>
+    <Modal :showing="showReceipt" @close="showReceipt = false">
+      <h1>Thank you for your purchase!</h1>
+    </Modal>
   </div>
 </template>
 
@@ -80,7 +83,8 @@ export default {
   data() {
     return {
       showModal: false,
-      selectedSet: 'Choose...'
+      selectedSet: 'Choose...',
+      showReceipt: false
     }
   },
   computed: {
@@ -105,7 +109,7 @@ export default {
       this.showModal = false;
     },
     schedule() {
-      this.$router.push({ path: 'Calendar' })
+      this.showReceipt = true;
     }
   }
 }
