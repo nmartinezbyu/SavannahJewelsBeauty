@@ -1,7 +1,10 @@
 <template>
   <div class="min-h-screen admin d-flex align-items-center justify-content-center">
-    <div v-if="this.$root.$data.authToken.length > 0">
+    <div v-if="this.$root.$data.authToken.length > 0" class="w-100 container">
       <h1>Admin</h1>
+      <CategoryItems category="Classic" :items="classicItems" />
+      <CategoryItems category="Hybrid" :items="hybridItems" />
+      <CategoryItems category="Volume" :items="volumeItems" />
     </div>
     <div v-else>
       <div class="p-4 bg-white rounded shadow-lg">
@@ -29,8 +32,13 @@
 </template>
 
 <script>
+import CategoryItems from '../components/CategoryItems.vue';
+import axios from 'axios';
 export default {
   name: 'Admin',
+  components: {
+    CategoryItems
+  },
   data() {
     return {
       username: '',
@@ -40,17 +48,35 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$root.$data.authToken.length > 0;
+    },
+    classicItems() {
+      return this.$root.$data.lashes.classic
+    },
+    hybridItems() {
+      return this.$root.$data.lashes.hybrid
+    },
+    volumeItems() {
+      return this.$root.$data.lashes.hybrid
     }
   },
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      if (this.username === 'Savannah' && this.password === "Beauty") {
-        this.$root.$data.authToken = "authenticated";
-      }
-      else {
-        return;
-      }
+      var url = "http://localhost:3000/login";
+      axios.post(url, {
+              username: this.username,
+              password: this.password
+          })
+          .then(response => {
+              console.log("Post Response "); 
+              console.log(response.data);
+              if(response.data.authenticated) {
+                this.$root.$data.authToken = "authenticated";
+              }
+          })
+          .catch(e => {
+              console.log(e);
+          });
     }
   }
 }
@@ -72,6 +98,9 @@ export default {
 .form-control:focus {
   border-color: var(--secondary);
   box-shadow: 0 0 0 0.1rem var(--secondary);
+}
+.hover\:bg-light-gray:hover {
+  background-color: lightgray !important;
 }
 
 </style>

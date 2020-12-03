@@ -27,8 +27,8 @@
           <div>
               Price: 
                 <span v-if="selectedSet === 'Choose...'"> Select Set Type</span> 
-                <span v-else-if="selectedSet === 'Fill'">${{this.selectedLash.fill_price}}</span>
-                <span v-else-if="selectedSet === 'Full'">${{this.selectedLash.full_price}}</span>
+                <span v-else-if="selectedSet === 'Fill'">${{this.selectedLash.fillPrice}}</span>
+                <span v-else-if="selectedSet === 'Full'">${{this.selectedLash.fullPrice}}</span>
                 <span v-else></span>
           </div>
           <div >
@@ -125,32 +125,33 @@ export default {
       this.showReceipt = true;
       let price = 0;
       if(this.selectedSet === 'Fill') {
-        price = this.selectedLash.fill_price
+        price = this.selectedLash.fillPrice
       }
       else {
-        price = this.selectedLash.full_price
+        price = this.selectedLash.fullPrice
       }
       var date = new Date();
       date.setDate(new Date().getDate()+1);
       date.setHours(this.selectedTime, 0, 0);
       var url = "http://localhost:3000/appointments";
-            axios.post(url, {
-                    lasdId: this.selectedLash.id,
-                    lashType: this.selectedLash.name,
-                    lashSet: this.selectedSet,
-                    price: price,
-                    date: date.toString(), 
-                })
-                .then(response => {
-                    console.log("Post Response "); 
-                    console.log(response.data);
-                })
-                .catch(e => {
-                    console.log(e);
-                });
+      axios.post(url, {
+              lasdId: this.selectedLash.id,
+              lashName: this.selectedLash.name,
+              lashType: this.selectedLash.type,
+              lashSet: this.selectedSet,
+              price: price,
+              date: date.toString(), 
+          })
+          .then(response => {
+              console.log("Post Response "); 
+              console.log(response.data);
+          })
+          .catch(e => {
+              console.log(e);
+          });
             
-            this.selectedSet = 'Choose...';
-            this.selectedTime = 'Choose Time...';
+      this.selectedSet = 'Choose...';
+      this.selectedTime = 'Choose Time...';
     }
   }
 }
