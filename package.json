@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.21.0",
     "bootstrap": "^4.5.2",
     "core-js": "^3.6.5",
     "mongoose": "^5.11.1",

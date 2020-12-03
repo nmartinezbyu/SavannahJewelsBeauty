@@ -44,7 +44,18 @@
               <option value="Full">Full Set</option>
             </select>
           </div>
-          <button v-on:click="schedule" class="btn btn-primary bt-lg" v-bind:disabled="selectedSet === 'Choose...'">Schedule</button>
+          <div class="mb-3 input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect02">Time</label>
+            </div>
+            <select v-model="selectedTime" class="custom-select" id="inputGroupSelect02" >
+              <option selected>Choose Time...</option>
+              <option value="12">12:00PM</option>
+              <option value="15">3:00PM</option>
+              <option value="17">5:00PM</option>
+            </select>
+          </div>
+          <button v-on:click="schedule" class="btn btn-primary bt-lg" v-bind:disabled="selectedSet === 'Choose...' || selectedTime === 'Choose Time...'">Schedule</button>
         </div>
           <!-- details -->
         </div>
@@ -73,6 +84,7 @@
 <script>
 import Modal from '../components/Modal.vue';
 import PortfolioList from '../components/PortfolioList';
+import axios from 'axios';
 
 export default {
   name: 'Scheduling',
@@ -84,6 +96,7 @@ export default {
     return {
       showModal: false,
       selectedSet: 'Choose...',
+      selectedTime: 'Choose Time...',
       showReceipt: false
     }
   },
@@ -101,7 +114,7 @@ export default {
       return this.$root.$data.selectedLash
     },
     isScheduleDisabled() {
-      return this.selectedSet !== "Choose..."
+      return this.selectedSet !== "Choose..." || this.selectedTime !== "Choose Time..."
     }
   },
   methods: {
@@ -110,6 +123,34 @@ export default {
     },
     schedule() {
       this.showReceipt = true;
+      let price = 0;
+      if(this.selectedSet === 'Fill') {
+        price = this.selectedLash.fill_price
+      }
+      else {
+        price = this.selectedLash.full_price
+      }
+      var date = new Date();
+      date.setDate(new Date().getDate()+1);
+      date.setHours(this.selectedTime, 0, 0);
+      var url = "http://localhost:3000/appointments";
+            axios.post(url, {
+                    lasdId: this.selectedLash.id,
+                    lashType: this.selectedLash.name,
+                    lashSet: this.selectedSet,
+                    price: price,
+                    date: date.toString(), 
+                })
+                .then(response => {
+                    console.log("Post Response "); 
+                    console.log(response.data);
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+            
+            this.selectedSet = 'Choose...';
+            this.selectedTime = 'Choose Time...';
     }
   }
 }

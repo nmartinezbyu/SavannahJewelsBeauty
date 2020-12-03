@@ -13,6 +13,16 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+//For CORS
+app.use(function (req, res, next) {
+  let origin = req.headers.origin;
+  res.header("Access-Control-Allow-Origin", req.headers.host.indexOf("localhost") > -1 ? "http://localhost:8080" : origin);
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
