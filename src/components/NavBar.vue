@@ -10,6 +10,7 @@
                 <router-link to="/portfolio">Portfolio</router-link>
                 <router-link to="/scheduling">Scheduling/Pricing</router-link>
                 <router-link to="/about">About</router-link>
+                <router-link to="/admin">Admin</router-link>
             </div>
         </div>
     </nav>

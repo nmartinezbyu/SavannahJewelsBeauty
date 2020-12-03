@@ -7,7 +7,8 @@ Vue.config.productionTip = false
 
 let data = {
   selectedLash: {},
-  lashes: lashes
+  lashes: lashes,
+  authToken: '',
 }
 
 new Vue({
