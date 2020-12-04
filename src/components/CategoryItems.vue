@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
           <label>Image</label>
-          <input class="form-control" v-model="itemToAdd.image" placeholder="Image"/>
+          <input type="file" class="form-control" name="photo" @change="imageChanged">
         </div>
         <div class="form-group">
           <label>Full Price</label>
@@ -56,6 +56,7 @@ import PlusCircle from '../assets/svg/PlusCircle.vue';
 import PencilIcon from '../assets/svg/PencilIcon.vue';
 import CheckBadge from '../assets/svg/CheckBadge.vue';
 import Modal from '../components/Modal.vue';
+import axios from 'axios';
 
 export default {
   name: 'CategoryItems',
@@ -79,6 +80,7 @@ export default {
       editId: null,
       editTitle: '',
       showAddModal: false,
+      image: null,
       itemToAdd: {
         name: "",
         image: "",
@@ -92,14 +94,28 @@ export default {
     toggle: function(open) {
       this.open = open;
     },
-    onAdd: function() {
-      alert("adding item");
+    onAdd: async function() {
+      try {
+        const formData = new FormData();
+        formData.append('photo', this.image, this.image.name)
+        let r1 = await axios.post('/lashes/photos', formData);
+        //Don't know if we are adding the rest of the details by here
+        //Also should we get rid of the Id in the schema.
+        this.itemToAdd.image = r1.data.path;
+        let r2 = await axios.post('/lashes', this.itemToAdd);
+        this.addItem = r2.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
     onSave: function() {
       this.editId = null;
     },
     onDelete: function() {
       alert("Are you sure you want to delete this item?");
+    },
+    imageChanged(event) {
+      this.image = event.target.files[0]
     }
   }
 }
