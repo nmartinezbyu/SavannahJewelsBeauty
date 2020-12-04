@@ -5,6 +5,11 @@
       <CategoryItems category="Classic" :items="classicItems" />
       <CategoryItems category="Hybrid" :items="hybridItems" />
       <CategoryItems category="Volume" :items="volumeItems" />
+      <h2 style="marginTop: 20px">Appointments</h2>
+      <div class="d-flex flex-row align-items-center justify-content-around hover:bg-light-gray" v-for="item in appointments" :key="item.id">
+        <div>{{item.lashName}}</div>
+        <div>{{item.date}}</div>
+      </div>
     </div>
     <div v-else>
       <div class="p-4 bg-white rounded shadow-lg">
@@ -57,6 +62,9 @@ export default {
     },
     volumeItems() {
       return this.$root.$data.lashes.hybrid
+    },
+    appointments() {
+      return this.$root.$data.appointments
     }
   },
   methods: {

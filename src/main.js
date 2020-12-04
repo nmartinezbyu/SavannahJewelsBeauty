@@ -26,7 +26,7 @@ new Vue({
     },
     async getLashes() {
       try {
-        let response = await axios.get("/lashes");
+        let response = await axios.get("http://localhost:3000/lashes");
         this.lashes = response.data;
         return true;
       } catch (error) {
@@ -35,7 +35,7 @@ new Vue({
     },
     async getAppointments() {
       try {
-        let response = await axios.get("/appointments");
+        let response = await axios.get("http://localhost:3000/appointments");
         this.appointments = response.data;
         return true;
       } catch (error) {
