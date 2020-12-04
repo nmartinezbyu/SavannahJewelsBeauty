@@ -1,8 +1,8 @@
 <template>
   <div class="portfolioContainer">
-    <div class="portfolioItem" v-for="item in items" :key="item.id" v-on:click="selectLash(item)">
+    <div class="portfolioItem" v-for="item in items" :key="item._id" v-on:click="selectLash(item)">
       <div class="title">{{item.name}}</div>
-      <img :src="'/images/' + item.image"/>
+      <img :src="item.image"/>
       <div class="overlay">
         <div class="text">View Details</div>
       </div>
