@@ -133,7 +133,7 @@ export default {
       var date = new Date();
       date.setDate(new Date().getDate()+1);
       date.setHours(this.selectedTime, 0, 0);
-      var url = "http://localhost:3000/appointments";
+      var url = "http://localhost:3001/appointments";
       axios.post(url, {
               lasdId: this.selectedLash.id,
               lashName: this.selectedLash.name,

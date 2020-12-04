@@ -132,7 +132,7 @@ export default {
     },
     async getLashes() {
       try {
-        let response = await axios.get("http://localhost:3000/lashes");
+        let response = await axios.get("http://localhost:3001/lashes");
         this.$root.$data.lashes = response.data;
         return true;
       } catch (error) {
@@ -144,11 +144,11 @@ export default {
       try {
         const formData = new FormData();
         formData.append('photo', this.image, this.image.name)
-        let r1 = await axios.post('http://localhost:3000/lashes/photos', formData);
+        let r1 = await axios.post('http://localhost:3001/lashes/photos', formData);
         //Don't know if we are adding the rest of the details by here
         //Also should we get rid of the Id in the schema.
         this.itemToAdd.image = r1.data.path;
-        let r2 = await axios.post('http://localhost:3000/lashes', this.itemToAdd);
+        let r2 = await axios.post('http://localhost:3001/lashes', this.itemToAdd);
         this.addItem = r2.data;
         this.getLashes();
         this.showAddModal = false;
@@ -163,7 +163,7 @@ export default {
     },
     onSave: async function() {
       try {
-        await axios.put(`http://localhost:3000/lashes/${this.itemToEdit._id}`, this.itemToEdit);
+        await axios.put(`http://localhost:3001/lashes/${this.itemToEdit._id}`, this.itemToEdit);
         this.editId = null;
         this.getLashes();
       } catch (error) {
@@ -177,7 +177,7 @@ export default {
     },
     onDelete: async function(id) {
       try {
-        await axios.delete(`http://localhost:3000/lashes/${id}`);
+        await axios.delete(`http://localhost:3001/lashes/${id}`);
         this.getLashes();
       } catch (error) {
         console.error(error);

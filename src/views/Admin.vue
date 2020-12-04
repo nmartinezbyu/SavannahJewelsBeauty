@@ -72,7 +72,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      var url = "http://localhost:3000/login";
+      var url = "http://localhost:3001/login";
       axios.post(url, {
               username: this.username,
               password: this.password
