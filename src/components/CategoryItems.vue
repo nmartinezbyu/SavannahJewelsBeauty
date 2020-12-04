@@ -150,14 +150,16 @@ export default {
         this.itemToAdd.image = r1.data.path;
         let r2 = await axios.post('http://localhost:3000/lashes', this.itemToAdd);
         this.addItem = r2.data;
+        this.getLashes();
+        this.showAddModal = false;
       } catch (error) {
         console.error(error);
       }
     },
     onEdit: function(item) {
       this.editId = item._id;
-      this.itemToEdit = item;
-      this.itemIfCanceled = item;
+      this.itemToEdit = Object.assign({}, item);
+      this.itemIfCanceled = JSON.parse(JSON.stringify(item))
     },
     onSave: async function() {
       try {
@@ -170,12 +172,13 @@ export default {
     },
     onCancel: function(item) {
       this.editId = null;
-      item = this.itemIfCanceled;
-      this.itemToEdit = item;
+      item = JSON.parse(JSON.stringify(this.itemIfCanceled))
+      this.itemToEdit = Object.assign({}, item);
     },
     onDelete: async function(id) {
       try {
         await axios.delete(`http://localhost:3000/lashes/${id}`);
+        this.getLashes();
       } catch (error) {
         console.error(error);
       }

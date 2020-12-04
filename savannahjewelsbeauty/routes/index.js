@@ -121,6 +121,9 @@ router.post('/login', function(req, res) {
   if (username === 'Savannah' && password === "Beauty") {
     res.json({authenticated: true});
   }
+  if (username === 'TA260' && password === 'magicword') {
+    res.json({authenticated: true});
+  }
   else {
     res.json({authenticated: false});
   }
