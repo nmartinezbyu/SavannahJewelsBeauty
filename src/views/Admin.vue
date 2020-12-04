@@ -55,13 +55,13 @@ export default {
       return this.$root.$data.authToken.length > 0;
     },
     classicItems() {
-      return this.$root.$data.lashes.classic
+      return this.$root.$data.lashes.filter(x => x.type == "Classic")
     },
     hybridItems() {
-      return this.$root.$data.lashes.hybrid
+      return this.$root.$data.lashes.filter(x => x.type == "Hybrid")
     },
     volumeItems() {
-      return this.$root.$data.lashes.hybrid
+      return this.$root.$data.lashes.filter(x => x.type == "Volume")
     },
     appointments() {
       return this.$root.$data.appointments
