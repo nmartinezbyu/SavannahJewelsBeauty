@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-12 col-md-4">
           <div class="card w-100">
-            <img class="w-100" :src="'/images/' + selectedLash.image" alt="lash" />
+            <img class="w-100" :src="selectedLash.image" alt="lash" />
             <div class="text-center text-black card-body font-brush display-4">
               {{selectedLash.name}}
             </div>

@@ -7,15 +7,15 @@
       <span class="cursor-pointer" v-on:click="showAddModal = true"><PlusCircle class="hover:color-success"/></span>
     </h4>
     <div v-if="open">
-      <div class="d-flex flex-row align-items-center justify-content-around hover:bg-light-gray" v-for="item in items" :key="item.id">
-        <div v-if="editId == item.id"><input v-model="editTitle"/></div>
+      <div class="d-flex flex-row align-items-center justify-content-around hover:bg-light-gray" v-for="item in items" :key="item._id">
+        <div v-if="editId == item._id"><input v-model="editTitle"/></div>
         <div class="flex-col" v-else>{{item.name}}</div>
-        <img class="flex-col" :src="'/images/' + item.image" height="48" width="48"/>
+        <img class="flex-col" :src="item.image" height="48" width="48"/>
         <div class="d-inline-flex">
-          <div v-if="editId == item.id" v-on:click="onSave" class="cursor-pointer hover:color-success">
+          <div v-if="editId == item._id" v-on:click="onSave" class="cursor-pointer hover:color-success">
             <CheckBadge />
           </div>
-          <div v-else class="flex-col cursor-pointer hover:color-warning" v-on:click="editId = item.id">
+          <div v-else class="flex-col cursor-pointer hover:color-warning" v-on:click="editId = item._id">
             <PencilIcon />
           </div>
           <div class="flex-col cursor-pointer hover:color-danger" v-on:click="onDelete">
@@ -25,7 +25,7 @@
       </div>
     </div>
     <Modal :showing="showAddModal" @close="showAddModal = false">
-      <form onSubmit="onAdd">
+      <form v-on:submit="onAdd">
         <div class="form-group">
           <label>Name</label>
           <input class="form-control" v-model="itemToAdd.name" placeholder="Name"/>
@@ -94,15 +94,16 @@ export default {
     toggle: function(open) {
       this.open = open;
     },
-    onAdd: async function() {
+    onAdd: async function(event) {
+      event.preventDefault();
       try {
         const formData = new FormData();
         formData.append('photo', this.image, this.image.name)
-        let r1 = await axios.post('/lashes/photos', formData);
+        let r1 = await axios.post('http://localhost:3000/lashes/photos', formData);
         //Don't know if we are adding the rest of the details by here
         //Also should we get rid of the Id in the schema.
         this.itemToAdd.image = r1.data.path;
-        let r2 = await axios.post('/lashes', this.itemToAdd);
+        let r2 = await axios.post('http://localhost:3000/lashes', this.itemToAdd);
         this.addItem = r2.data;
       } catch (error) {
         console.log(error);
