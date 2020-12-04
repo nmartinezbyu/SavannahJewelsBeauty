@@ -7,21 +7,41 @@
       <span class="cursor-pointer" v-on:click="showAddModal = true"><PlusCircle class="hover:color-success"/></span>
     </h4>
     <div v-if="open">
-      <div class="d-flex flex-row align-items-center justify-content-around hover:bg-light-gray" v-for="item in items" :key="item._id">
-        <div v-if="editId == item._id"><input v-model="editTitle"/></div>
-        <div class="flex-col" v-else>{{item.name}}</div>
-        <img class="flex-col" :src="item.image" height="48" width="48"/>
-        <div class="d-inline-flex">
-          <div v-if="editId == item._id" v-on:click="onSave" class="cursor-pointer hover:color-success">
-            <CheckBadge />
-          </div>
-          <div v-else class="flex-col cursor-pointer hover:color-warning" v-on:click="editId = item._id">
-            <PencilIcon />
-          </div>
-          <div class="flex-col cursor-pointer hover:color-danger" v-on:click="onDelete">
-            <TrashIcon />
+      <div v-for="item in items" :key="item._id">
+        
+        <div v-if="editId == item._id" class="d-flex hover:bg-light-gray flex-row align-items-center justify-content-around">
+          <input v-model="itemToEdit.name" />
+          <img class="flex-col" :src="item.image" height="48" width="48"/>
+          <div>Full Price: $<input v-model="itemToEdit.fullPrice" /></div>
+          <div>Fill Price: $<input v-model="itemToEdit.fillPrice" /></div>
+          <div class="d-inline-flex">
+            <div v-on:click="onSave" class="cursor-pointer hover:color-success">
+              <CheckBadge />
+            </div>
+            <div v-on:click="onCancel(item)" class="cursor-pointer hover:color-warning">
+              <XIcon />
+            </div>
+            <div class="flex-col cursor-pointer hover:color-danger" v-on:click="onDelete(item._id)">
+              <TrashIcon />
+            </div>
           </div>
         </div>
+        
+        <div v-else class="d-flex hover:bg-light-gray flex-row align-items-center justify-content-around">
+          <div>{{item.name}}</div>
+          <img :src="item.image" height="48" width="48"/>
+          <div>Full Price: ${{item.fullPrice}}</div>
+          <div>Fill Price: ${{item.fillPrice}}</div>
+          <div class="d-inline-flex">
+            <div class="flex-col cursor-pointer hover:color-warning" v-on:click="onEdit(item)">
+              <PencilIcon />
+            </div>
+            <div class="flex-col cursor-pointer hover:color-danger" v-on:click="onDelete(item._id)">
+              <TrashIcon />
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
     <Modal :showing="showAddModal" @close="showAddModal = false">
@@ -55,6 +75,7 @@ import TrashIcon from '../assets/svg/TrashIcon.vue';
 import PlusCircle from '../assets/svg/PlusCircle.vue';
 import PencilIcon from '../assets/svg/PencilIcon.vue';
 import CheckBadge from '../assets/svg/CheckBadge.vue';
+import XIcon from '../assets/svg/XIcon.vue';
 import Modal from '../components/Modal.vue';
 import axios from 'axios';
 
@@ -67,6 +88,7 @@ export default {
     PlusCircle,
     PencilIcon,
     CheckBadge,
+    XIcon,
     Modal
   },
   props: {
@@ -87,12 +109,35 @@ export default {
         fullPrice: 0,
         fillPrice: 0,
         type: this.category
+      },
+      itemToEdit: {
+        name: "",
+        image: "",
+        fullPrice: 0,
+        fillPrice: 0,
+        type: this.category
+      },
+      itemIfCanceled: {
+        name: "",
+        image: "",
+        fullPrice: 0,
+        fillPrice: 0,
+        type: this.category
       }
     }
   },
   methods: {
     toggle: function(open) {
       this.open = open;
+    },
+    async getLashes() {
+      try {
+        let response = await axios.get("http://localhost:3000/lashes");
+        this.$root.$data.lashes = response.data;
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
     },
     onAdd: async function(event) {
       event.preventDefault();
@@ -106,18 +151,38 @@ export default {
         let r2 = await axios.post('http://localhost:3000/lashes', this.itemToAdd);
         this.addItem = r2.data;
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
-    onSave: function() {
-      this.editId = null;
+    onEdit: function(item) {
+      this.editId = item._id;
+      this.itemToEdit = item;
+      this.itemIfCanceled = item;
     },
-    onDelete: function() {
-      alert("Are you sure you want to delete this item?");
+    onSave: async function() {
+      try {
+        await axios.put(`http://localhost:3000/lashes/${this.itemToEdit._id}`, this.itemToEdit);
+        this.editId = null;
+        this.getLashes();
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    onCancel: function(item) {
+      this.editId = null;
+      item = this.itemIfCanceled;
+      this.itemToEdit = item;
+    },
+    onDelete: async function(id) {
+      try {
+        await axios.delete(`http://localhost:3000/lashes/${id}`);
+      } catch (error) {
+        console.error(error);
+      }
     },
     imageChanged(event) {
       this.image = event.target.files[0]
-    }
+    },
   }
 }
 </script>

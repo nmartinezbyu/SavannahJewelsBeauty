@@ -90,6 +90,31 @@ router.post('/lashes', function(req, res, next) {
   });
 });
 
+router.put('/lashes/:lash', async (req, res) => {
+  try {
+    let lash = await Lash.findOne({ _id: req.params.lash }); 
+    lash.name = req.body.name;
+    lash.image = req.body.image;
+    lash.fullPrice = req.body.fullPrice;
+    lash.fillPrice = req.body.fillPrice;
+    lash.save();
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+})
+
+router.delete('/lashes/:lash', async (req, res) => {
+  try {
+    await Lash.deleteOne({ _id: req.params.lash });
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+})
+
 router.post('/login', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
