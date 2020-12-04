@@ -8,6 +8,8 @@
       <h2 style="marginTop: 20px">Appointments</h2>
       <div class="d-flex flex-row align-items-center justify-content-around hover:bg-light-gray" v-for="item in appointments" :key="item.id">
         <div>{{item.lashName}}</div>
+        <div>{{item.lashType}}</div>
+        <div>${{item.price}}</div>
         <div>{{item.date}}</div>
       </div>
     </div>
